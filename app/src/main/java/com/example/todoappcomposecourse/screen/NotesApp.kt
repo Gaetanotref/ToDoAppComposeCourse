@@ -1,6 +1,7 @@
 package com.example.todoappcomposecourse.screen
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.todoappcomposecourse.viewmodel.NoteViewModel
 
@@ -8,15 +9,15 @@ import com.example.todoappcomposecourse.viewmodel.NoteViewModel
 fun NotesApp(
     noteViewModel: NoteViewModel = viewModel()
 ) {
-    val notesList = noteViewModel.getAllNotest()
+    val notesList = noteViewModel.noteList.collectAsState().value
 
     NoteScreen(
         notes = notesList,
         onAddNote = {
-            noteViewModel.addNote(it)
+            noteViewModel.addNote(note = it)
         },
         onRemoveNote = {
-            noteViewModel.removeNote(it)
+            noteViewModel.removeNote(note = it)
         }
     )
 }

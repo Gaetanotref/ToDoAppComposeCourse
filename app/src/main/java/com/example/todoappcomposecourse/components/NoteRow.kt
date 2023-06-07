@@ -1,5 +1,6 @@
 package com.example.todoappcomposecourse.components
 
+import android.icu.text.SimpleDateFormat
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -15,7 +16,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.todoappcomposecourse.model.Note
-import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @Composable
 fun NoteRow(
@@ -23,6 +24,10 @@ fun NoteRow(
     note: Note,
     onNoteClicked: (Note) -> Unit
 ) {
+    val formattedDate =
+        SimpleDateFormat("EEE, d MMM hh:mm aaa", Locale.getDefault()).format(note.entryDate)
+
+
     Surface(
         modifier = modifier
             .padding(4.dp)
@@ -42,10 +47,10 @@ fun NoteRow(
             Text(text = note.title, style = MaterialTheme.typography.titleMedium)
             Text(text = note.description, style = MaterialTheme.typography.bodyMedium)
             Text(
-                text = note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
+                text = formattedDate,
+                //note.entryDate.format(DateTimeFormatter.ofPattern("EEE, d MMM")),
                 style = MaterialTheme.typography.bodySmall
             )
-
         }
 
     }

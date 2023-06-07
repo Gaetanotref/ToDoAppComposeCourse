@@ -9,7 +9,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.todoappcomposecourse.screen.NotesApp
 import com.example.todoappcomposecourse.ui.theme.ToDoAppComposeCourseTheme
 import com.example.todoappcomposecourse.viewmodel.NoteViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +23,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
 
 
 @Preview(showBackground = true)

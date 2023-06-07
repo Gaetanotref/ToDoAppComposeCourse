@@ -27,7 +27,11 @@ fun NoteInputText(
 
     TextField(value = text,
         onValueChange = onTextChange,
-        colors = TextFieldDefaults.textFieldColors(containerColor = Color.Transparent),
+        colors = TextFieldDefaults.colors(
+            focusedContainerColor = Color.Transparent,
+            unfocusedContainerColor = Color.Transparent,
+            disabledContainerColor = Color.Transparent,
+        ),
         maxLines = maxLines,
         label = {
             Text(
